@@ -115,7 +115,9 @@ namespace OpenUtau.App.Controls {
                         : isAltTrack ? ThemeManager.BlackKeyNameBrush
                         : ThemeManager.WhiteKeyNameBrush;
                     int tone = ViewConstants.MaxTone - 1 - track;
-                    string toneName = MusicMath.GetToneName(tone);
+
+                    // TODO solfege name should be here
+                    string toneName = NoteHelper.StringifyTone(tone);
                     var toneTextLayout = TextLayoutCache.Get(toneName, brush, 12);
                     var toneTextPosition = new Point(
                         Bounds.Width - 4 - (int)toneTextLayout.Width,
@@ -130,14 +132,11 @@ namespace OpenUtau.App.Controls {
                         toneTextLayout.Draw(context, new Point());
                     }
 
-                    // TODO interval notations has nothing to do with scales, both should coexist : if solfege notation then all the app should turn C into Do etc
                     string degreeName = Preferences.Default.DegreeStyle switch
                     {
-                        1 => Scale.SolfegeIntervalName(NoteHelper.CastNote(tone))?.ToString() ?? "",
                         2 => Scale.Interval(NoteHelper.CastNote(tone)).ToString() ?? "",
-                        _ => ""
+                        _ => "",
                     };
-
                     var degreeTextLayout = TextLayoutCache.Get(degreeName, brush, 12);
                     var degreeTextPosition = new Point(
                         4,

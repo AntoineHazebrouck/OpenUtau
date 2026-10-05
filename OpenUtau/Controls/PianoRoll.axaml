@@ -538,7 +538,7 @@
               </Button.ContextMenu>
             </Button>
             <!-- Mode selection -->
-            <Button Margin="0" Padding="0,1" Height="20" Width="70" Background="Transparent" Click="OnModeMenuButton"
+            <Button Margin="0" Padding="0,1" Height="20" Width="120" Background="Transparent" Click="OnModeMenuButton"
               ToolTip.Tip="{DynamicResource pianoroll.key}">
               <TextBlock Grid.Column="0" Text="{Binding NotesViewModel.ModeText}"
                           TextAlignment="Right" FontSize="10" FontFamily="monospace"

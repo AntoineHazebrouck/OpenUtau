@@ -229,7 +229,7 @@ namespace OpenUtau.App.ViewModels {
                     Modes.Clear();
                     Modes.AddRange(
                         Enum.GetValues<Mode>().Select((mode) => new MenuItemViewModel {
-                            Header = mode.ToString(),
+                            Header = ModeHelper.StringifyMode(mode),
                             Command = SetModeCommand,
                             CommandParameter = mode,
                         }));
@@ -384,7 +384,7 @@ namespace OpenUtau.App.ViewModels {
         private void UpdateScale() {
             Scale = Scale.Build(Project.key, Project.mode);
             TonicText = "1=" + NoteHelper.StringifyNote(Scale.Tonic);
-            ModeText = Scale.Mode.ToString();
+            ModeText = ModeHelper.StringifyMode(Scale.Mode);
         }
 
         public void OnXZoomed(Point position, double delta) {
